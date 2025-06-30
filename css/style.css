@@ -2,7 +2,7 @@
 :root {
     --main-color: #2196f3;
     --secondary-color: #ececec;
-    --section-padding: 60px;
+    --section-padding: 100px;
     --header-height: 75px;
     --header-focus-color: #fafafa;
     --main-transition: 0.3s;
@@ -68,6 +68,17 @@ ul {
 /* End Components */
 /* Start Header */
 
+header {
+    height: 72px;
+    background-color: white;
+}
+
+@media (max-width: 767px) {
+    header {
+        height: 90px
+    }
+}
+
 header .container {
     display: flex;
     justify-content: space-between;
@@ -105,7 +116,7 @@ header .container .nav>li>a {
     display: block;
     position: relative;
     text-decoration: none;
-    font-size: 19px;
+    font-size: 18px;
     padding: 25px 30px;
     color: black;
     overflow: hidden;
@@ -243,12 +254,121 @@ header .mega-menu .links li:hover::before {
 /* Start Landing */
 
 .landing {
-    background-color: var(--secondary-color);
-    padding: 400px 0;
+    position: relative;
+    height: calc(100vh - 72px);
 }
 
-.landing h1 {
+@media (max-width: 767px) {
+    .landing {
+        height: calc(100vh - 90px);
+    }
+}
+
+.landing::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-color);
+    transform: skewY(-6deg);
+    z-index: -2;
+    transform-origin: top left;
+}
+
+.landing .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-bottom: 120px;
+    height: calc(100vh - 72px);
+}
+
+@keyframes up-and-down {
+    from {
+        top: -30px;
+    }
+
+    to {
+        top: 30px;
+    }
+}
+
+@media (max-width: 991px) {
+    .landing .container .image {
+        display: none;
+    }
+}
+
+.landing .container .image img {
+    position: relative;
+    animation-name: up-and-down;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-direction: alternate;
+    width: 600px;
+}
+
+@media (max-width: 991px) {
+    .landing .container .text {
+        text-align: center;
+    }
+}
+
+.landing .container .text h1 {
+    font-size: 40px;
+    letter-spacing: -2px;
     margin: 0;
+}
+
+.landing .container .text p {
+    color: #666;
+    margin-top: 5px;
+    font-size: 23px;
+    line-height: 1.7;
+    font-weight: 500;
+}
+
+@keyframes go-down {
+    0% {
+        bottom: 50px;
+    }
+
+    16% {
+        bottom: 65px;
+    }
+
+    26% {
+        bottom: 50px;
+    }
+
+    36% {
+        bottom: 65px;
+    }
+
+    46% {
+        bottom: 50px;
+    }
+
+    100% {
+        bottom: 50px;
+    }
+}
+
+.landing .go-down {
+    display: block;
+    text-align: center;
+    font-size: 32px;
+    color: var(--main-color);
+    position: relative;
+    bottom: 50px;
+    animation-name: go-down;
+    animation-duration: 1.6s;
+    animation-iteration-count: infinite;
 }
 
 /* End Landing */
