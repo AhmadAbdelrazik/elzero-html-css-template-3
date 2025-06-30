@@ -65,6 +65,68 @@ ul {
 /* End General Rules */
 /* Start Components */
 
+.section-heading {
+    display: block;
+    margin: 0 auto 60px;
+    width: fit-content;
+    padding: 10px 20px;
+    border: 2px solid black;
+    text-transform: uppercase;
+    text-align: center;
+    align-content: center;
+    position: relative;
+    font-size: 29px;
+}
+
+.section-heading::before,
+.section-heading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 13px;
+    height: 13px;
+    background-color: var(--main-color);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.section-heading::before {
+    left: -30px;
+}
+
+.section-heading::after {
+    right: -30px;
+}
+
+.section-heading:hover {
+    color: white;
+    border-color: white;
+    transition: var(--main-transition) 0.6s;
+}
+
+.section-heading:hover::before {
+    left: 0;
+    border-radius: 0;
+    width: 51%;
+    height: calc(100% + 1px);
+    transition: width var(--main-transition) linear var(--main-transition),
+        height var(--main-transition) linear var(--main-transition),
+        border-radius var(--main-transition) linear var(--main-transition),
+        left var(--main-transition) linear;
+}
+
+.section-heading:hover::after {
+    right: 0;
+    border-radius: 0;
+    width: 51%;
+    height: calc(100% + 1px);
+    transition: width var(--main-transition) linear var(--main-transition),
+        height var(--main-transition) linear var(--main-transition),
+        border-radius var(--main-transition) linear var(--main-transition),
+        right var(--main-transition) linear;
+}
+
 /* End Components */
 /* Start Header */
 
@@ -372,3 +434,85 @@ header .mega-menu .links li:hover::before {
 }
 
 /* End Landing */
+
+/* Start Articles */
+.articles {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+}
+
+.articles .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 40px
+}
+
+.articles .cards .card {
+    box-shadow: 0 0 10px 3px #ececec;
+    border-radius: 10px;
+    bottom: 0px;
+    overflow: hidden;
+    position: relative;
+    transition: box-shadow var(--main-transition),
+        bottom var(--main-transition);
+}
+
+.articles .cards .card .caption {
+    padding: 20px 15px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.articles .cards .card .caption h3 {
+    margin-bottom: 15px;
+
+}
+
+.articles .cards .card .caption p {
+    font-size: 16px;
+    color: #666;
+}
+
+.articles .cards .card .read-more {
+    padding: 20px 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.articles .cards .card .read-more a {
+    display: block;
+    color: var(--main-color);
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+@keyframes move-right {
+    to {
+        left: 10px;
+    }
+}
+
+.articles .cards .card .read-more i {
+    color: var(--main-color);
+    position: relative;
+    left: 0;
+}
+
+.articles img {
+    max-width: 100%;
+}
+
+.articles .cards .card:hover {
+    bottom: 10px;
+    box-shadow: 0 0 10px 6px #e6e6e6;
+}
+
+.articles .cards .card:hover .read-more i {
+    animation-name: move-right;
+    animation-duration: calc(1.5 * var(--main-transition));
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-timing-function: linear;
+}
+
+/* End Articles */
