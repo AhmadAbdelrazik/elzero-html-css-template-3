@@ -944,3 +944,104 @@ header .mega-menu .links li:hover::before {
 }
 
 /* End Team Members */
+/* Start Services */
+
+.services {
+    padding: var(--section-padding) 0;
+    background-color: var(--secondary-color);
+}
+
+.services .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px
+}
+
+.services .cards .card {
+    background-color: white;
+    text-align: center;
+    padding: 40px 0 0;
+    counter-increment: cnt;
+    box-shadow: 0 3px 9px 1px #aaa;
+    position: relative;
+    bottom: 0;
+    transition: bottom var(--main-transition);
+}
+
+.services .cards .card:hover {
+    bottom: 10px;
+}
+
+.services .cards .card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 4px;
+    background-color: var(--main-color);
+    transition: width var(--main-transition);
+}
+
+
+.services .cards .card:hover::after {
+    width: 100%;
+}
+
+.services .cards .card i {
+    color: #d5d5d5;
+    font-size: 70px;
+    margin-bottom: 10px;
+}
+
+.services .cards .card h3 {
+    color: var(--main-color);
+    font-size: 25px;
+    margin-bottom: 40px;
+}
+
+.services .cards .card .details {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+    padding-right: 20px;
+    background-color: #f9f9f9;
+}
+
+.services .cards .card .details a {
+    text-decoration: none;
+    color: var(--main-color);
+}
+
+.services .cards .card .details .number {
+    background-color: var(--main-color);
+    width: 30%;
+    height: 100%;
+    position: relative;
+}
+
+.services .cards .card .details .number::before {
+    content: "0" counter(cnt);
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 10px);
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.services .cards .card .details .number::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -37%;
+    transform: translateY(-50%) skewX(-30deg);
+    width: 55%;
+    height: 100%;
+    background-color: #d3d3d3;
+}
+
+/* End Services */
