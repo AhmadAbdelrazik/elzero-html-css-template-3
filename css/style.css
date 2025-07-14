@@ -1066,7 +1066,7 @@ header .mega-menu .links li:hover::before {
     }
 }
 
-.work-steps .container > .image img {
+.work-steps .container>.image img {
     max-width: 100%;
 }
 
@@ -1201,6 +1201,11 @@ header .mega-menu .links li:hover::before {
     margin: 0 10px;
     border: 1px solid #d4d4d4;
     border-radius: 10px;
+    transition: border-color var(--main-transition);
+}
+
+.events .content .count-down .count:hover {
+    border-color: var(--main-color);
 }
 
 .events .content .count-down .count .number {
